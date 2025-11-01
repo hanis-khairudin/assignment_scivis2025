@@ -13,19 +13,16 @@ st.set_page_config(
 url = "https://raw.githubusercontent.com/hanis-khairudin/assignment_scivis2025/refs/heads/main/FULLTIME%20STUDENT%20USING%20SOCIAL%20MEDIA.csv"
 fulltime_students_df = pd.read_csv(url)
 
-# Sidebar clean UI
+# Sidebar navigation
 st.sidebar.markdown("<h3 style='margin-bottom:10px;'>📌 Menu</h3>", unsafe_allow_html=True)
-
 page = st.sidebar.radio(
-    "",
+    "----",
     [
         "Objective 1: Explore Enrollment Trends",
         "Objective 2: Understand Key Factors",
         "Objective 3: Predict Future Enrollment"
-    ],
-    label_visibility="collapsed"
+    ]
 )
-
 
 # Main Title
 st.title("📊 Students’ Intention Toward Using Social Media & Emerging Technologies for Learning")
