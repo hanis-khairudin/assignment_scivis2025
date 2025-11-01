@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 # Page config
-st.set_page_config(page_title="Student Social Media Usage", page_icon="📊", layout="wide")
+st.set_page_config(page_title="Full-Time Student Social Media Usage", page_icon="📊", layout="wide")
 
 # Data loading
 @st.cache_data
@@ -16,7 +16,7 @@ df = load_data()
 # Sidebar nav
 page = st.sidebar.radio(
     "Navigate",
-    ["Home", "Demographics & E-learning", "Social Media Platforms", "Frequency of Visits"]
+    ["Demographics & E-learning", "Social Media Platforms", "Frequency of Visits"]
 )
 
-st.title("📚 Student Social Media Usage Dashboard")
+st.title("📚 Full-Time Student Social Media Usage Dashboard")
