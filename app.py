@@ -32,7 +32,7 @@ st.write(fulltime_students_df.head())
 # -------------------------------------------------------------------------
 # ✅ Objective 1
 # -------------------------------------------------------------------------
-if page == "Objective 1":
+if page == "Objective 1: Explore Enrollment Trends":
     st.header("🎯 Objective 1: Analyze students’ demographic & social media usage patterns")
 
     st.subheader("📌 Academic Status vs E-learning Involvement")
@@ -82,7 +82,7 @@ if page == "Objective 1":
 # -------------------------------------------------------------------------
 # ✅ Objective 2
 # -------------------------------------------------------------------------
-elif page == "Objective 2":
+elif page == "Objective 2: Understand Key Factors":
     st.header("🎯 Objective 2: Students’ willingness & attitudes toward learning tech")
 
     # Likert scale columns
@@ -145,7 +145,7 @@ elif page == "Objective 2":
 # -------------------------------------------------------------------------
 # ✅ Objective 3
 # -------------------------------------------------------------------------
-elif page == "Objective 3":
+elif page == "Objective 3: Predict Future Enrollment":
     st.header("🎯 Objective 3: Factors influencing students’ intention to use tech")
 
     correlation_cols = [
