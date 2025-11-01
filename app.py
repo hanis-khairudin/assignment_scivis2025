@@ -14,7 +14,6 @@ st.write("Dataset 'Student Survey' by Razib Mustafiz from Kaggle")
 
 # --- 3. LOAD DATA FROM GITHUB ---
 url = "https://raw.githubusercontent.com/hanis-khairudin/assignment_scivis2025/refs/heads/main/FULLTIME%20STUDENT%20USING%20SOCIAL%20MEDIA.csv"
-    return pd.read_csv(url)
 
 try:
     students_df = pd.read_csv(url)
