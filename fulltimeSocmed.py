@@ -1,15 +1,16 @@
+# --- 1. IMPORT LIBRARIES ---
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Page config
-st.set_page_config(
-    page_title="Student Tech Learning Insights",
-    page_icon="📚",
-    layout="wide"
-)
+# --- 2. PAGE CONFIGURATION ---
+st.set_page_config(page_title="FULL TIME STUDENTS USE SOCIAL MEDIA")
 
-# Load Data from GitHub
+st.header("FULL TIME STUDENTS USE SOCIAL MEDIA", divider="gray")
+st.write("Assignment Scientific Visualization JIE42403 📊💡")
+st.write("Dataset 'Student Survey' by Razib Mustafiz from Mendeley")
+
+# --- 3. LOAD DATA FROM GITHUB ---
 url = "https://raw.githubusercontent.com/hanis-khairudin/assignment_scivis2025/refs/heads/main/FULLTIME%20STUDENT%20USING%20SOCIAL%20MEDIA.csv"
 fulltime_students_df = pd.read_csv(url)
 
