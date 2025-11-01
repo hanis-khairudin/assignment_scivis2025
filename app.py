@@ -1,15 +1,8 @@
 import streamlit as st
 
-st.set_page_config(
-    page_title="Student Survey"
-)
+st.set_page_config(page_title="📊 SciVis Assignment 2025", layout="wide")
 
-visualise = st.Page('fulltimeSocmed.py', title='Full time Students Use Social Media')
+st.title("📊 Scientific Visualization Assignment 2025")
+st.write("Welcome! Choose a page from the sidebar to explore each objective 🚀")
 
-pg = st.navigation(
-        {
-            "Menu": [visualise]
-        }
-    )
-
-pg.run()
+st.sidebar.success("⬅️ Select an Objective page")
