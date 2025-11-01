@@ -19,3 +19,59 @@ page = st.sidebar.radio("Select Objective", [
 st.title("📊 Analysis of Students’ Intention Toward Social Media & Emerging Tech")
 
 st.write(fulltime_students_df.head())
+
+# ========== PAGE 2: Academic Status vs E-Learning ==========
+elif page == "Objective 1":
+    st.subheader("🎓 Academic Status vs E-learning Involvement")
+
+    grouped_data = df.groupby(
+        ["AcademicStatus", "Areyoupresentlyinvolvedinelearningusinganysocialmediaplatformore"]
+    ).size().reset_index(name="Count")
+
+    fig = px.bar(
+        grouped_data,
+        x="AcademicStatus",
+        y="Count",
+        color="Areyoupresentlyinvolvedinelearningusinganysocialmediaplatformore",
+        barmode="group",
+        title="Academic Status vs E-learning Involvement"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+
+# ========== PAGE 3: Platforms ==========
+    st.subheader("📱 Most Used Social Media Platforms")
+
+    platforms = df["socialMediaPlatforms"].str.split(";").explode()
+    platform_counts = platforms.value_counts().reset_index()
+    platform_counts.columns = ["Platform", "Count"]
+
+    fig = px.pie(
+        platform_counts,
+        names="Platform",
+        values="Count",
+        title="Distribution of Social Media Platforms",
+        # rainbow meme avoided for sanity
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+
+# ========== PAGE 4: Frequency ==========
+    st.subheader("🕒 Frequency of Social Network Visits by Academic Status")
+
+    grouped_data = df.groupby(
+        ["AcademicStatus", "HowoftendoyouvisityourSocialNetworkaccounts"]
+    ).size().reset_index(name="Count")
+
+    fig = px.bar(
+        grouped_data,
+        x="AcademicStatus",
+        y="Count",
+        color="HowoftendoyouvisityourSocialNetworkaccounts",
+        barmode="group",
+        title="Academic Status vs Social Network Visit Frequency"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
