@@ -4,9 +4,9 @@ import plotly.express as px
 
 st.set_page_config(page_title="Learning Tech Insights", page_icon="📚", layout="wide")
 
-# Load data from GitHub
+# Load data
 url = "https://raw.githubusercontent.com/hanis-khairudin/assignment_scivis2025/refs/heads/main/FULLTIME%20STUDENT%20USING%20SOCIAL%20MEDIA.csv"
-fulltime_students_df = pd.read_csv(url)
+df = pd.read_csv(url)
 
 # Sidebar navigation
 st.sidebar.title("📂 Objectives")
@@ -18,10 +18,11 @@ page = st.sidebar.radio("Select Objective", [
 
 st.title("📊 Analysis of Students’ Intention Toward Social Media & Emerging Tech")
 
-st.write(fulltime_students_df.head())
+# Show first few rows for inspection
+st.write(df.head())
 
-# ========== PAGE 2: Academic Status vs E-Learning ==========
-elif page == "Objective 1":
+# ======================= OBJECTIVE 1 =======================
+if page == "Objective 1":
     st.subheader("🎓 Academic Status vs E-learning Involvement")
 
     grouped_data = df.groupby(
@@ -36,11 +37,9 @@ elif page == "Objective 1":
         barmode="group",
         title="Academic Status vs E-learning Involvement"
     )
-
     st.plotly_chart(fig, use_container_width=True)
 
-
-# ========== PAGE 3: Platforms ==========
+    # --- Platforms ---
     st.subheader("📱 Most Used Social Media Platforms")
 
     platforms = df["socialMediaPlatforms"].str.split(";").explode()
@@ -51,33 +50,28 @@ elif page == "Objective 1":
         platform_counts,
         names="Platform",
         values="Count",
-        title="Distribution of Social Media Platforms",
-        # rainbow meme avoided for sanity
+        title="Distribution of Social Media Platforms"
     )
-
     st.plotly_chart(fig, use_container_width=True)
 
-
-# ========== PAGE 4: Frequency ==========
+    # --- Frequency ---
     st.subheader("🕒 Frequency of Social Network Visits by Academic Status")
 
-    grouped_data = df.groupby(
+    grouped_data2 = df.groupby(
         ["AcademicStatus", "HowoftendoyouvisityourSocialNetworkaccounts"]
     ).size().reset_index(name="Count")
 
     fig = px.bar(
-        grouped_data,
+        grouped_data2,
         x="AcademicStatus",
         y="Count",
         color="HowoftendoyouvisityourSocialNetworkaccounts",
         barmode="group",
         title="Academic Status vs Social Network Visit Frequency"
     )
-
     st.plotly_chart(fig, use_container_width=True)
 
-
-# ========== PAGE 5: Attitude & Willingness ==========
+# ======================= OBJECTIVE 2 =======================
 elif page == "Objective 2":
     st.subheader("💡 Students’ Attitude Toward Social Media & Emerging Tech")
 
@@ -108,14 +102,12 @@ elif page == "Objective 2":
     st.plotly_chart(fig, use_container_width=True)
 
     st.write("---")
-
     st.write("### 🔥 Correlation: Willingness vs Perceived Benefits")
 
     willingness_cols = [
         'Iwillbewillingtousesocialmediaplatformsandemergingtechnologiesfo',
         'Iwillbewillingtodevotetherequiredtimeandenergyformylearningactiv'
     ]
-
     perceived_benefits_cols = [
         'Incorporatingsocialmediaplatformsandemergingtechnologieshighligh',
         'Socialmediaplatformsandemergingtechnologieshighlightedearliercou',
@@ -135,8 +127,8 @@ elif page == "Objective 2":
     st.plotly_chart(fig2, use_container_width=True)
 
     st.write("---")
-
     st.write("### 🥧 % Students Willing To Use Emerging Tech")
+
     willing_counts = df['Iwillbewillingtousesocialmediaplatformsandemergingtechnologiesfo'].value_counts().reset_index()
     willing_counts.columns = ["Response", "Count"]
 
@@ -148,9 +140,11 @@ elif page == "Objective 2":
     )
     st.plotly_chart(fig3, use_container_width=True)
 
+# ======================= OBJECTIVE 3 =======================
+elif page == "Objective 3":
+    st.subheader("🤝 Social Influence and Intention to Use Technology")
 
-st.header("Correlation Heatmap")
-
+    st.write("### 🔍 Correlation Heatmap")
     correlation_cols = [
         'Ihavethetechnicalskillstousesocialmediaplatformsandemergingtechn',
         'MycolleaguesthinkIshouldusesocialmediaandemergingtechnologiesfor',
@@ -159,7 +153,7 @@ st.header("Correlation Heatmap")
         'Iwillbewillingtodevotetherequiredtimeandenergyformylearningactiv'
     ]
 
-    corr_matrix = fulltime_students_df[correlation_cols].corr()
+    corr_matrix = df[correlation_cols].corr()
 
     fig = px.imshow(
         corr_matrix,
@@ -169,17 +163,15 @@ st.header("Correlation Heatmap")
     )
     st.plotly_chart(fig, use_container_width=True)
 
-
-st.header("Average Intention Score by Social Influence")
+    st.write("### 📊 Average Intention Score by Social Influence")
 
     influence_cols = [
         'MycolleaguesthinkIshouldusesocialmediaandemergingtechnologiesfor',
         'Myfamilyandfriendswillappreciatemyuseofsocialmediaandemergingtec'
     ]
-
     intention_col = 'Iwillbewillingtousesocialmediaplatformsandemergingtechnologiesfo'
 
-    avg_intent = fulltime_students_df.groupby(influence_cols)[intention_col].mean().reset_index()
+    avg_intent = df.groupby(influence_cols)[intention_col].mean().reset_index()
 
     fig = px.bar(
         avg_intent,
@@ -192,16 +184,10 @@ st.header("Average Intention Score by Social Influence")
     )
     st.plotly_chart(fig, use_container_width=True)
 
-
-st.header("Response Distribution by Influence")
-
-    influence_cols = [
-        'MycolleaguesthinkIshouldusesocialmediaandemergingtechnologiesfor',
-        'Myfamilyandfriendswillappreciatemyuseofsocialmediaandemergingtec'
-    ]
+    st.write("### 📈 Response Distribution by Influence")
 
     for col in influence_cols:
-        df_counts = fulltime_students_df[col].value_counts().reset_index()
+        df_counts = df[col].value_counts().reset_index()
         df_counts.columns = ["Response", "Count"]
 
         fig = px.bar(
@@ -211,4 +197,5 @@ st.header("Response Distribution by Influence")
             title=f"Distribution of Responses: {col}",
             text="Count"
         )
+        fig.update_traces(textposition="outside")
         st.plotly_chart(fig, use_container_width=True)
