@@ -14,7 +14,7 @@ url = "https://raw.githubusercontent.com/hanis-khairudin/assignment_scivis2025/r
 fulltime_students_df = pd.read_csv(url)
 
 # Sidebar navigation
-st.sidebar.markdown("<h3 style='margin-bottom:10px;'>📌 Menu</h3>", unsafe_allow_html=True)
+st.sidebar.title("Objectives")
 page = st.sidebar.radio(
     "----",
     [
@@ -26,6 +26,8 @@ page = st.sidebar.radio(
 
 # Main Title
 st.title("📊 Students’ Intention Toward Using Social Media & Emerging Technologies for Learning")
+
+st.write(fulltime_students_df.head())
 
 # -------------------------------------------------------------------------
 # ✅ Objective 1
