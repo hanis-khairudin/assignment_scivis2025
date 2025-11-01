@@ -17,3 +17,5 @@ page = st.sidebar.radio("Select Objective", [
 ])
 
 st.title("📊 Analysis of Students’ Intention Toward Social Media & Emerging Tech")
+
+st.write(fulltime_students_df.head())
