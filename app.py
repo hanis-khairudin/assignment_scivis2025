@@ -1,17 +1,22 @@
 import streamlit as st
+import pandas as pd
+import plotly.express as px
 
-st.set_page_config(
-    page_title="Student Survey"
+# Page config
+st.set_page_config(page_title="Student Social Media Usage", page_icon="📊", layout="wide")
+
+# Data loading
+@st.cache_data
+def load_data():
+    url = "https://raw.githubusercontent.com/hanis-khairudin/assignment_scivis2025/refs/heads/main/FULLTIME%20STUDENT%20USING%20SOCIAL%20MEDIA.csv"
+    return pd.read_csv(url)
+
+df = load_data()
+
+# Sidebar nav
+page = st.sidebar.radio(
+    "Navigate",
+    ["Home", "Demographics & E-learning", "Social Media Platforms", "Frequency of Visits"]
 )
 
-visualise = st.Page('studentSurvey.py', title='Pencapaian Akademik', icon=":material/school:")
-
-home = st.Page('home.py', title='Homepage', default=True, icon=":material/home:")
-
-pg = st.navigation(
-        {
-            "Menu": [home, visualise]
-        }
-    )
-
-pg.run()
+st.title("📚 Student Social Media Usage Dashboard")
