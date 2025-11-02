@@ -24,14 +24,7 @@ def load_data(url=DATA_URL):
     return df
 
 df = load_data()
-
-st.sidebar.markdown("**Data preview**")
-if st.sidebar.checkbox("Show raw data", value=False):
-    st.dataframe(df.head(200))
-
-# Helper: safe column check
-def has_cols(df, cols):
-    return all(col in df.columns for col in cols)
+st.dataframe(df.head(200))
 
 # Tabs: 1 tab per objective
 tab1, tab2, tab3 = st.tabs(["Objective 1", "Objective 2", "Objective 3"])
