@@ -132,7 +132,7 @@ with tab2:
             counts.columns = ['response', 'count']
             fig = px.bar(counts, x='response', y='count', title='Willingness to Use Social Media & Emerging Tech for Learning')
             st.plotly_chart(fig, use_container_width=True)
-            st.markdown("**Interpretation:** This bar chart shows how many students selected each level of agreement (willingness).")
+            st.markdown("**Interpretation:** These charts show the level of agreement with statements about using social media for learning. The height of the bars indicates whether students generally Agree or Strongly Agree, suggesting a positive attitude.")
         else:
             st.warning(f"Column `{w_col}` not found.")
     except Exception as e:
@@ -161,7 +161,7 @@ with tab2:
             # px.imshow for heatmap
             fig_heat = px.imshow(corr, text_auto=".2f", title="Correlation: Willingness vs Perceived Benefits")
             st.plotly_chart(fig_heat, use_container_width=True)
-            st.markdown("**Interpretation:** Positive correlations indicate items that move together (e.g., higher perceived benefits often align with greater willingness).")
+            st.markdown("**Interpretation:** This heatmap uses color intensity to show how strongly willingness correlates with the perceived benefits of using social media for learning. Darker colors, especially red, indicate that students who perceive more benefits are also more willing to use the technology.")
         else:
             st.warning("Not enough Likert / numeric columns found to compute correlation heatmap.")
     except Exception as e:
@@ -177,7 +177,7 @@ with tab2:
             vals.columns = ['response', 'count']
             fig_pie = px.pie(vals, names='response', values='count', title='Percentage of Students Willing to Adopt Emerging Technologies')
             st.plotly_chart(fig_pie, use_container_width=True)
-            st.markdown("**Interpretation:** The pie highlights the share of respondents at each willingness level (e.g., strongly agree vs disagree).")
+            st.markdown("**Interpretation:** This chart provides a clear breakdown of students' overall willingness to use emerging technologies for learning. The largest slice represents the percentage of students who are most likely to be willing.")
         else:
             st.warning(f"Column `{w_col}` not found.")
     except Exception as e:
@@ -214,7 +214,7 @@ with tab3:
             corr = corr_df.corr()
             fig_corr = px.imshow(corr, text_auto=".2f", title="Correlation: Skills, Influence, and Willingness")
             st.plotly_chart(fig_corr, use_container_width=True)
-            st.markdown("**Interpretation:** Correlations help identify which factors (skills, peer/family influence) are associated with willingness.")
+            st.markdown("**Interpretation:** This heatmap shows the relationship between having technical skills and peer support with the willingness to use social media for learning. Strong positive correlations suggest that these factors may be important drivers of intention.")
         else:
             st.warning("Not enough columns found to compute the correlation heatmap for Objective 3.")
     except Exception as e:
@@ -248,7 +248,7 @@ with tab3:
                                  barmode='group', title='Average Intention Score by Influence Level',
                                  labels={'avg_intention': 'Average Intention Score'})
                 st.plotly_chart(fig_avg, use_container_width=True)
-                st.markdown("**Interpretation:** Bars show how average willingness (intention proxy) changes with different levels of peer/family influence.")
+                st.markdown("**Interpretation:** This chart displays how average willingness to use (intention) increases as agreement with peer and family influence increases. It visually confirms if being encouraged by others leads to a higher intention to use social media for learning.")
             else:
                 st.warning("Could not compute average intention — no valid numeric influence columns.")
         else:
@@ -275,7 +275,7 @@ with tab3:
             fig_stack = px.bar(long_df, x='response', y='count', color='influence',
                                title='Distribution of Responses for Influencing Factors', barmode='group')
             st.plotly_chart(fig_stack, use_container_width=True)
-            st.markdown("**Interpretation:** Compare how peer and family influence items distribute across response levels.")
+            st.markdown("**Interpretation:** These charts illustrate the breakdown of how students feel about peer and family influence. The high counts for Agree or Strongly Agree show that many full-time students perceive this influence as strong.")
         else:
             st.warning("No influencing-factor columns found in dataset.")
     except Exception as e:
