@@ -8,10 +8,8 @@ st.set_page_config(page_title="Student Tech Learning Insights", page_icon="📚"
 
 st.title("Student Intention to Use Social Media & Emerging Technologies — Visual Analysis")
 st.markdown(
-    """
-This dashboard reproduces the visual flow and insights from your original scripts,
-organized as **one tab per objective**. Charts use **Plotly Express** and each
-visualization includes a short interpretation.
+    """The dataset is “Survey Dataset on Face-to-Face Students’ Intention to Use Social Media and Emerging Technologies for Continuous Learning,” 
+    published on Mendeley Data by Akande Oluwatobi, Taofeeq Badmus, Akinyinka Akindele, Oladiran Arulogun. Published on 22 June 2020.
 """
 )
 
@@ -31,19 +29,18 @@ tab1, tab2, tab3 = st.tabs(["Objective 1", "Objective 2", "Objective 3"])
 
 # ---------------- Objective 1 ------------------------------------------------
 with tab1:
-    st.header("🎯 Objective 1 — Analyze demographic & social media usage patterns")
-    st.info(
-        "Objective: Explore students' demographics and how they use social media "
-        "and emerging technologies for learning. (3 visuals: grouped bar, pie, grouped bar)"
-    )
+    st.header("🎯 Objective 1 — To analyze students’ demographic and social media usage patterns.")
 
     # Summary box (100-150 words approx.)
     st.subheader("Summary")
     st.write(
-        "Full-time students show varying participation in e-learning and different frequencies "
-        "of visiting social network accounts. A few platforms dominate usage (visible in the pie chart). "
-        "Average daily time on social networks varies across student groups and is useful to identify "
-        "which cohorts spend the most time online."
+        "This part looks at how full-time students use social media and how often they are involved"
+        "in online learning. The results show that most students are active on social media and use" 
+        "it for learning, communication, and sharing information. Platforms like Instagram, YouTube,"
+        "and WhatsApp are the most popular among them. The charts also show that the time students"
+        "spend on social media is different for each group, with some using it very often while others" 
+        "less frequently. These findings help us understand how students’ habits and preferences affect" 
+        "the way they learn and interact online."
     )
 
     # Visualization 1: Relationship between AcademicStatus and E-learning involvement
