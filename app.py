@@ -24,6 +24,10 @@ def load_data(url=DATA_URL):
 df = load_data()
 st.dataframe(df.head(200))
 
+def has_cols(df, cols):
+    return all(col in df.columns for col in cols)
+
+
 # Tabs: 1 tab per objective
 tab1, tab2, tab3 = st.tabs(["Objective 1", "Objective 2", "Objective 3"])
 
@@ -57,7 +61,7 @@ with tab1:
             labels={'count': 'Count'}
         )
         st.plotly_chart(fig1, use_container_width=True)
-        st.markdown("**Interpretation:** This grouped bar shows which academic-status groups are engaged in e-learning via social media. Look for bars with larger counts to identify the main participants.")
+        st.markdown("**Interpretation:** This chart shows that full-time students are actively involved in e-learning using social media. The number of students who are involved in e-learning is much higher than those who are not involved.")
     except Exception as e:
         st.error(f"Could not create chart 1 — missing columns. ({e})")
 
@@ -74,7 +78,7 @@ with tab1:
             fig2 = px.pie(platform_counts, names='platform', values='count',
                           title='Distribution of Most Used Social Media Platforms')
             st.plotly_chart(fig2, use_container_width=True)
-            st.markdown("**Interpretation:** The pie shows which platforms are most frequently used. Platforms with the largest slices are dominant among students.")
+            st.markdown("**Interpretation:** This visual shows how often students of different academic statuses check their social media. It highlights the most common frequency of visits for the full-time student group.")
         else:
             st.warning("Column `socialMediaPlatforms` not found in data.")
     except Exception as e:
@@ -99,7 +103,7 @@ with tab1:
             fig3 = px.bar(grp_freq, x='AcademicStatus', y='count', color=freq_col,
                           barmode='group', title='Frequency of Social Network Visits by Academic Status')
             st.plotly_chart(fig3, use_container_width=True)
-            st.markdown("**Interpretation:** Shows how often different student groups visit social networks; useful for engagement planning.")
+            st.markdown("**Interpretation:** This chart compares the time spent daily on social media across different academic statuses. It reveals the most common duration of daily use for full-time students, like "Less than 1 hour" or "1-3 hours."")
         else:
             st.warning("Neither `Onaveragehowmuchtimedoyouspenddailyonasocialnetworkingsite` nor `HowoftendoyouvisityourSocialNetworkaccounts` columns found.")
     except Exception as e:
@@ -182,9 +186,6 @@ with tab2:
 # ---------------- Objective 3 ------------------------------------------------
 with tab3:
     st.header("🎯 Objective 3 — Factors influencing intention to use social media & technologies")
-    st.info(
-        "Objective: Examine relationships among technical skills, peer/family influence, and intention to use (intention proxied by willingness)."
-    )
 
     st.subheader("Summary")
     st.write(
