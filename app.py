@@ -97,36 +97,18 @@ elif page == "Objective 2: Understand Key Factors":
     ]
 
     st.subheader("📌 Distribution of Attitude Responses")
-first_three = attitude_cols[:3]
-cols = st.columns(3)
-
-for i, col in enumerate(first_three):
-    df_counts = fulltime_students_df[col].value_counts().reset_index()
-    df_counts.columns = ["Response", "Count"]
-
-    fig = px.bar(
-        df_counts,
-        x="Response",
-        y="Count",
-        text="Count",
-        title=f"Responses for: {col}"
-    )
-    cols[i].plotly_chart(fig, use_container_width=True)
-
-# Show remaining charts normally
-remaining = attitude_cols[3:]
-for col in remaining:
-    df_counts = fulltime_students_df[col].value_counts().reset_index()
-    df_counts.columns = ["Response", "Count"]
-
-    fig = px.bar(
-        df_counts,
-        x="Response",
-        y="Count",
-        text="Count",
-        title=f"Responses for: {col}"
-    )
-    st.plotly_chart(fig, use_container_width=True)
+    for col in attitude_cols: 
+        df_counts = fulltime_students_df[col].value_counts().reset_index() 
+        df_counts.columns = ["Response", "Count"] 
+        
+        fig = px.bar( 
+            df_counts, 
+            x="Response", 
+            y="Count", 
+            text="Count", 
+            title=f"Responses for: {col}" 
+        ) 
+        st.plotly_chart(fig, use_container_width=True)
 
     st.subheader("📌 Correlation Between Willingness & Perceived Benefits")
 
