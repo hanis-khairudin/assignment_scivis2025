@@ -108,14 +108,15 @@ with tab1:
 # ---------------- Objective 2 ------------------------------------------------
 with tab2:
     st.header("🎯 Objective 2 — Evaluate willingness & attitude toward using technology for learning")
-    st.info(
-        "Objective: Assess students' attitudes, willingness, and perceived benefits of using social media and emerging technologies for learning."
-    )
 
     st.subheader("Summary")
     st.write(
-        "Attitude questions (Likert-scale) show overall acceptance levels; correlations across willingness and perceived benefits "
-        "reveal how attitudes relate to readiness to adopt. A pie chart highlights the share of students who are willing to adopt these technologies."
+        "This part focuses on how willing and positive students feel about using social media and new" 
+        "technologies for learning. Most students agree that these platforms can help make learning easier" 
+        "and more interesting. The results show that students who believe social media is useful are more" 
+        "likely to use it for their studies. Many students are open to adopting new technologies, showing" 
+        "a strong interest in learning through digital tools. Overall, students have a positive attitude" 
+        "and are ready to explore new ways of learning using technology."
     )
 
     # Visualization 1: Distribution of a key willingness item (bar)
@@ -187,8 +188,13 @@ with tab3:
 
     st.subheader("Summary")
     st.write(
-        "Technical skills, peer influence, and family/friend appreciation can influence intention. Heatmaps show correlations; grouped/stacked bars "
-        "show how intention averages change across influence levels and distribution of agreement for the influence items."
+        "This part studies what factors encourage students to use social media and new technologies" 
+        "for continuous learning. The findings show that students who have better technical skills and" 
+        "support from friends or family are more likely to use these platforms for learning. Peer and" 
+        "family influence play an important role in motivating students to use technology. When students" 
+        "feel confident and supported, they are more willing to learn through digital platforms. These" 
+        "insights show that both personal skills and social encouragement can increase students’ interest" 
+        "in technology-based learning."
     )
 
     # Visualization 1: Correlation heatmap (technical skills, influence, willingness)
