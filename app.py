@@ -38,12 +38,12 @@ with tab1:
     # Summary box 
     st.subheader("Summary")
     st.write(
-        "This part looks at how full-time students use social media and how often they are involved"
-        "in online learning. The results show that most students are active on social media and use" 
-        "it for learning, communication, and sharing information. Platforms like Instagram, YouTube,"
-        "and WhatsApp are the most popular among them. The charts also show that the time students"
-        "spend on social media is different for each group, with some using it very often while others" 
-        "less frequently. These findings help us understand how students’ habits and preferences affect" 
+        "This part looks at how full-time students use social media and how often they are involved "
+        "in online learning. The results show that most students are active on social media and use "
+        "it for learning, communication, and sharing information. Platforms like Instagram, YouTube, "
+        "and WhatsApp are the most popular among them. The charts also show that the time students "
+        "spend on social media is different for each group, with some using it very often while others "
+        "less frequently. These findings help us understand how students’ habits and preferences affect "
         "the way they learn and interact online."
     )
 
@@ -103,7 +103,8 @@ with tab1:
             fig3 = px.bar(grp_freq, x='AcademicStatus', y='count', color=freq_col,
                           barmode='group', title='Frequency of Social Network Visits by Academic Status')
             st.plotly_chart(fig3, use_container_width=True)
-            st.markdown("**Interpretation:** This chart compares the time spent daily on social media across different academic statuses. It reveals the most common duration of daily use for full-time students, like "Less than 1 hour" or "1-3 hours."")
+            # fix: use single quotes for inner quotes or escape them
+            st.markdown('**Interpretation:** This chart compares the time spent daily on social media across different academic statuses. It reveals the most common duration of daily use for full-time students, like "Less than 1 hour" or "1-3 hours."')
         else:
             st.warning("Neither `Onaveragehowmuchtimedoyouspenddailyonasocialnetworkingsite` nor `HowoftendoyouvisityourSocialNetworkaccounts` columns found.")
     except Exception as e:
@@ -115,11 +116,11 @@ with tab2:
 
     st.subheader("Summary")
     st.write(
-        "This part focuses on how willing and positive students feel about using social media and new" 
-        "technologies for learning. Most students agree that these platforms can help make learning easier" 
-        "and more interesting. The results show that students who believe social media is useful are more" 
-        "likely to use it for their studies. Many students are open to adopting new technologies, showing" 
-        "a strong interest in learning through digital tools. Overall, students have a positive attitude" 
+        "This part focuses on how willing and positive students feel about using social media and new "
+        "technologies for learning. Most students agree that these platforms can help make learning easier "
+        "and more interesting. The results show that students who believe social media is useful are more "
+        "likely to use it for their studies. Many students are open to adopting new technologies, showing "
+        "a strong interest in learning through digital tools. Overall, students have a positive attitude "
         "and are ready to explore new ways of learning using technology."
     )
 
@@ -189,14 +190,20 @@ with tab3:
 
     st.subheader("Summary")
     st.write(
-        "This part studies what factors encourage students to use social media and new technologies" 
-        "for continuous learning. The findings show that students who have better technical skills and" 
-        "support from friends or family are more likely to use these platforms for learning. Peer and" 
-        "family influence play an important role in motivating students to use technology. When students" 
-        "feel confident and supported, they are more willing to learn through digital platforms. These" 
-        "insights show that both personal skills and social encouragement can increase students’ interest" 
+        "This part studies what factors encourage students to use social media and new technologies "
+        "for continuous learning. The findings show that students who have better technical skills and "
+        "support from friends or family are more likely to use these platforms for learning. Peer and "
+        "family influence play an important role in motivating students to use technology. When students "
+        "feel confident and supported, they are more willing to learn through digital platforms. These "
+        "insights show that both personal skills and social encouragement can increase students’ interest "
         "in technology-based learning."
     )
+
+    # Pre-define influence_cols so it is always available later
+    influence_cols = [
+        'MycolleaguesthinkIshouldusesocialmediaandemergingtechnologiesfor',
+        'Myfamilyandfriendswillappreciatemyuseofsocialmediaandemergingtec'
+    ]
 
     # Visualization 1: Correlation heatmap (technical skills, influence, willingness)
     st.subheader("1) Correlation among skills, influence, and willingness")
@@ -225,10 +232,6 @@ with tab3:
     # Visualization 2: Average intention score by influence level
     st.subheader("2) Average intention by peer & family influence")
     try:
-        influence_cols = [
-            'MycolleaguesthinkIshouldusesocialmediaandemergingtechnologiesfor',
-            'Myfamilyandfriendswillappreciatemyuseofsocialmediaandemergingtec'
-        ]
         intention_col = 'Iwillbewillingtousesocialmediaplatformsandemergingtechnologiesfo'
         cols_ok = [c for c in influence_cols + [intention_col] if c in df.columns]
         if all(c in df.columns for c in [intention_col]) and any(c in df.columns for c in influence_cols):
