@@ -35,7 +35,7 @@ tab1, tab2, tab3 = st.tabs(["Objective 1", "Objective 2", "Objective 3"])
 with tab1:
     st.header("🎯 Objective 1 — To analyze students’ demographic and social media usage patterns.")
 
-    # Summary box (100-150 words approx.)
+    # Summary box 
     st.subheader("Summary")
     st.write(
         "This part looks at how full-time students use social media and how often they are involved"
