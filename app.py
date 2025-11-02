@@ -68,7 +68,7 @@ with tab1:
     st.write("---")
 
     # Visualization 2: Distribution of Most Used Social Media Platforms (pie)
-    st.subheader("2) Most used social media platforms (pie)")
+    st.subheader("2) Most used social media platforms")
     try:
         if 'socialMediaPlatforms' in df.columns:
             # split multi-select entries separated by ';' and count
@@ -142,7 +142,7 @@ with tab2:
     st.write("---")
 
     # Visualization 2: Correlation heatmap between willingness and perceived benefits
-    st.subheader("2) Correlation between willingness & perceived benefits (heatmap)")
+    st.subheader("2) Correlation between willingness & perceived benefits")
     try:
         willingness_cols = [
             'Iwillbewillingtousesocialmediaplatformsandemergingtechnologiesfo',
@@ -171,7 +171,7 @@ with tab2:
     st.write("---")
 
     # Visualization 3: Pie chart of willingness (percentage)
-    st.subheader("3) Percentage willing to adopt emerging technologies (pie)")
+    st.subheader("3) Percentage willing to adopt emerging technologies")
     try:
         if w_col in df.columns:
             vals = df[w_col].value_counts().reset_index()
